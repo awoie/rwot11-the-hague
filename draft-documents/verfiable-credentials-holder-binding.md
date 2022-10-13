@@ -154,13 +154,12 @@ TBD
 There is a variety of use cases that include different types of holder binding and can usually be distinuished into two categories, "on-site" and "remote" as the location of the verifier has a significant influence on the trust relationship between the holder and the verifier. In the "on-site" case, holder binding works like identification processes equivalent to classical, analog ID documents: The verifier requests a credential and the holder transmits a verifiable presentation of his VC. The communication channel here can take place "offline" via connections such as NFC, Bluetooth or Wifi, or "online" if both the wallet of the holder and the verifier are connected to the Internet. If there is visual contact, the verifier can perform a simple identification of the holder using biometric data verified by the issuer and stored as claims in the VC. The transmission of biometric data is always critical from a privacy point of view and should be avoided if possible. However, direct physical contact allows the holder to easily authenticate the verifier so that he can better assess the implications of his data being released. Holder binding (e.g. with biometric identification) in the remote use case introduces significant technical complexity and privacy risks. A wallet must authenticate the holder itself or leave it to a trusted verifier, depending on the use case. At the same time, it must enable unique identification of the communication partner so that it provides the holder with the tools for a self-sovereign decision.
 
 ### holder binding with multiple VCs
-linking credentials with
- - holder DIDs
- - link secrets
+A Verifiable Presentation contains presentations of one or more Verifiable Credentials and therefore holder binding can be included in either or all of them. Subjects and/or (?) Holders of multiple VCs shall be linked together if they represent the same entity. Multiple mechanisms exist to link multiple credentials:
+ - holder DIDs or other identifiers
+ - link secrets or other ZKP methods
  - matching attributes/claims
-to leverage  holder binding
-
-tbd Paul
+ - and more...
+If a credential A enables holder binding, then a credential B can be linked by these mechanisms to relate to that holder binding of credential A. A typical use case would involve the presentation of credential A with the proof of holder binding to the issuer of credential B. After the verification the issuer can now issue a credential B to the wallet of the holder, which contains a linking mechanism between credentials A&B, such that a combined presentation can benefit from the holder binding of credential A. The various linking mechanisms have different properties towards security, privacy and scalability.
 
 ## Use Cases
 
